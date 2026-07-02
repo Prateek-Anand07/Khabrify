@@ -1,6 +1,7 @@
 package com.prateek.khabrify.ui.profile
 
 import android.content.Intent
+import android.net.Uri
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -16,6 +17,7 @@ import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.outlined.Code
 import androidx.compose.material.icons.outlined.Email
 import androidx.compose.material.icons.outlined.Language
+import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.StarRate
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -26,6 +28,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -81,7 +84,7 @@ fun AboutScreen(
             modifier = Modifier
                 .size(100.dp)
                 .clip(CircleShape)
-                .background(Color.White), // FIX: Forced white so the logo blends seamlessly
+                .background(Color.White),
             contentAlignment = Alignment.Center
         ) {
             Image(
@@ -94,13 +97,20 @@ fun AboutScreen(
         Spacer(modifier = Modifier.height(16.dp))
         Text(
             text = "Khabrify",
-            fontSize = 28.sp,
+            style = MaterialTheme.typography.headlineMedium,
             fontWeight = FontWeight.ExtraBold,
             color = MaterialTheme.colorScheme.onBackground
         )
+        Spacer(modifier = Modifier.height(4.dp))
+        Text(
+            text = "Stay updated. Stay ahead!",
+            style = MaterialTheme.typography.bodyLarge, // Replaces hardcoded 16.sp
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+        Spacer(modifier = Modifier.height(4.dp))
         Text(
             text = "Version 1.0.0",
-            fontSize = 14.sp,
+            style = MaterialTheme.typography.labelLarge, // Replaces hardcoded 14.sp
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
 
@@ -156,8 +166,24 @@ fun AboutScreen(
 
                 HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
 
-                AboutActionRow(Icons.Outlined.Language, "Visit our Website") {
-                    Toast.makeText(context, "Website coming soon", Toast.LENGTH_SHORT).show()
+                AboutActionRow(
+                    icon = ImageVector.vectorResource(id = R.drawable.github),
+                    title = "View Source Code"
+                ) {
+                    val websiteUrl = "https://github.com/Prateek-Anand07/Khabrify"
+                    val intent = Intent(Intent.ACTION_VIEW, websiteUrl.toUri())
+                    context.startActivity(intent)
+                }
+
+                HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+
+                AboutActionRow(
+                    icon = ImageVector.vectorResource(id = R.drawable.linkedin),
+                    title = "Developer Profile"
+                ) {
+                    val linkedinUrl = "https://www.linkedin.com/in/prateek-anand-780a3428a/"
+                    val intent = Intent(Intent.ACTION_VIEW, linkedinUrl.toUri())
+                    context.startActivity(intent)
                 }
 
                 HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
