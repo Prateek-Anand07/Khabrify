@@ -19,3 +19,34 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# =====================================================================
+# Moshi ProGuard Rules
+# =====================================================================
+-keepattributes *Annotation*,Signature,InnerClasses,EnclosingMethod
+
+# Keep Moshi generic types and network adapters
+-dontwarn com.squareup.moshi.**
+-keep class com.squareup.moshi.** { *; }
+-keep interface com.squareup.moshi.** { *; }
+
+# Keep the Kotlin metadata that KotlinJsonAdapterFactory relies on
+-keep class kotlin.reflect.jvm.internal.** { *; }
+-keep class kotlin.Metadata { *; }
+
+
+# =====================================================================
+# Hilt & Firebase Service ProGuard Rules (PASTE THESE AT THE BOTTOM)
+# =====================================================================
+# Keep public classes extending FirebaseMessagingService from being stripped or renamed
+-keep public class * extends com.google.firebase.messaging.FirebaseMessagingService { public <init>(); }
+
+# Keep Hilt generated classes for Android Entry Points and Services
+-keep class * implements dagger.hilt.internal.GeneratedComponent { *; }
+-keep class * implements dagger.hilt.internal.aggregatedroot.AggregatedRoot { *; }
+-keep class * extends android.app.Service { *; }
+
+# Prevent Hilt injected fields (like your notificationDao) from being stripped
+-keepclassmembers class * {
+    @javax.inject.Inject <fields>;
+}

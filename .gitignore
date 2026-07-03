@@ -36,3 +36,8 @@ app/build/
 # Local AI tools
 .agents/
 skills-lock.json
+
+# Compiled Android Build Artifacts (APKs and Bundles)
+*.apk
+*.aab
+app/release/

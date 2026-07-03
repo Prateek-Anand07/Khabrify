@@ -24,6 +24,7 @@ import com.prateek.khabrify.ui.theme.KhabrifyTheme
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.core.net.toUri
 import androidx.lifecycle.lifecycleScope
+import com.google.firebase.messaging.FirebaseMessaging
 import com.prateek.khabrify.data.NewsRepository
 import com.prateek.khabrify.ui.theme.ThemePreferences
 import jakarta.inject.Inject
@@ -37,6 +38,13 @@ class MainActivity : ComponentActivity() {
         installSplashScreen()
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        FirebaseMessaging.getInstance().subscribeToTopic("news")
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Log.d("FCM", "Successfully subscribed to news topic!")
+                }
+            }
 
         handleNotificationIntent(intent)
 

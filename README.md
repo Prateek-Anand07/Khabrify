@@ -44,4 +44,7 @@ If you have any questions, feedback, or bug reports, feel free to contact the de
 * **Email:** [khabrify@gmail.com](mailto:khabrify@gmail.com)
 * **Developer Email:** [prateek.jha2320@gmail.com](mailto:prateek.jha2320@gmail.com)
 ---
-*Built by Prateek Anand.*  
+*Built by Prateek Anand.*
+
+---
+© 2026 Prateek Anand. All rights reserved.

@@ -31,6 +31,9 @@ module.exports = async (req, res) => {
             body: articleTitle,
             url: articleUrl
         },
+        android: {
+            priority: "high"
+        },
         topic: "news"
     };
 

@@ -1,8 +1,12 @@
 package com.prateek.khabrify.data
 
+import androidx.annotation.Keep
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.squareup.moshi.JsonClass
 
+@Keep
+@JsonClass(generateAdapter = true)
 @Entity(tableName = "saved_articles")
 data class Article(
     @PrimaryKey
@@ -16,6 +20,7 @@ data class Article(
     val category: String = ""
 )
 
+@Keep
 data class UserProfile(
     val uid: String = "",
     val name: String = "",
@@ -28,6 +33,7 @@ data class UserProfile(
     val notificationsEnabled: Boolean = false
 )
 
+@Keep
 @Entity(tableName = "notifications_table")
 data class NotificationEntity(
     @PrimaryKey(autoGenerate = true)
