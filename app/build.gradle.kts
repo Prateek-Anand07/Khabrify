@@ -11,7 +11,7 @@ plugins {
 
     id("com.google.gms.google-services")
 
-    id("com.mikepenz.aboutlibraries.plugin")
+//    id("com.mikepenz.aboutlibraries.plugin")
 }
 
 val localProperties = Properties()

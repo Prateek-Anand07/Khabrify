@@ -50,3 +50,13 @@
 -keepclassmembers class * {
     @javax.inject.Inject <fields>;
 }
+
+# Protect AboutLibraries models and UI from aggressive R8 optimization
+-keep class com.mikepenz.aboutlibraries.** { *; }
+-keepclassmembers class com.mikepenz.aboutlibraries.** { *; }
+-dontwarn com.mikepenz.aboutlibraries.**
+
+# Protect the generated raw resource ID
+-keepclassmembers class **.R$raw {
+    public static final int aboutlibraries;
+}

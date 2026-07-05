@@ -1,6 +1,8 @@
 package com.prateek.khabrify.ui
 
+import android.os.Build
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -59,6 +61,7 @@ import com.prateek.khabrify.ui.saved.SavedScreen
 import com.prateek.khabrify.ui.theme.AppTheme
 import com.prateek.khabrify.ui.theme.KhabrifyNavy
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun KhabrifyApp(
     homeViewModel: HomeViewModel,
@@ -106,6 +109,7 @@ fun KhabrifyApp(
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun MainAppScaffold(
     homeViewModel: HomeViewModel,
@@ -132,7 +136,7 @@ fun MainAppScaffold(
 
     Scaffold(
         topBar = {
-            if (currentRoute != BottomNavItem.Explore.route && currentRoute != "edit_profile") {
+            if (currentRoute != BottomNavItem.Explore.route && currentRoute != "edit_profile" && currentRoute!="notifications") {
                 KhabrifyTopBar(
                     isNotificationsEnabled = isNotificationsEnabled,
                     onNotificationClick = {

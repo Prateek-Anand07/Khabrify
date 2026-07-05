@@ -22,7 +22,7 @@ khabrify-webhook/node_modules/
 khabrify-webhook/.env
 khabrify-webhook/.vercel/
 
-# Google Play Console Signing Keys (CRITICAL: Never commit these)
+# Google Play Console Signing Keys
 *.jks
 *.keystore
 key.properties
